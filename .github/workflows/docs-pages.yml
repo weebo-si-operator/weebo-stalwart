@@ -1,7 +1,7 @@
 name: Docs
 
 # Builds the Fumadocs site as a static export and publishes it to GitHub
-# Pages (https://batleforc.github.io/weebo-stalwart). GitHub-only: the Pages
+# Pages (https://weebo-si-operator.github.io/weebo-stalwart). GitHub-only: the Pages
 # deploy actions have no Forgejo Actions equivalent, unlike ci.yml.
 #
 # One-time setup: Settings → Pages → Build and deployment → Source =

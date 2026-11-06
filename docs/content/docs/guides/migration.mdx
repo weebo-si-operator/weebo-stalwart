@@ -51,7 +51,7 @@ importer() {
     -v "$HOME/.kube/config:/kubeconfig:ro" -e KUBECONFIG=/kubeconfig \
     -v "$PWD:/work:ro" -w /work \
     --entrypoint /usr/local/bin/weebo-stalwart-importer \
-    ghcr.io/batleforc/weebo-stalwart-operator:<version> "$@"
+    ghcr.io/weebo-si-operator/weebo-stalwart-operator:<version> "$@"
 }
 ```
 

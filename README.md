@@ -1,7 +1,7 @@
 # weebo-stalwart
 
 Kubernetes operator managing Stalwart objects as CRDs, built on
-[weebo-operator-kit](https://github.com/batleforc/weebo-operator-kit).
+[weebo-operator-kit](https://github.com/weebo-si-operator/weebo-operator-kit).
 
 | Kind                | Scope      | What it does                                                       |
 | ------------------- | ---------- | ------------------------------------------------------------------ |

@@ -2,40 +2,40 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
-## [v0.3.0](https://github.com/batleforc/weebo-stalwart/compare/4d3609abc59f56100c5837782fa12dc4191fe5ac..v0.3.0) - 2026-10-22
+## [v0.3.0](https://github.com/weebo-si-operator/weebo-stalwart/compare/4d3609abc59f56100c5837782fa12dc4191fe5ac..v0.3.0) - 2026-10-22
 #### Features
-- kit v0.24.0, mail domains, submission host and Vault drawn in the CRD IDE (#5) - ([4d3609a](https://github.com/batleforc/weebo-stalwart/commit/4d3609abc59f56100c5837782fa12dc4191fe5ac)) - Maxime, Claude Opus 5.5 (1M context)
+- kit v0.24.0, mail domains, submission host and Vault drawn in the CRD IDE (#5) - ([4d3609a](https://github.com/weebo-si-operator/weebo-stalwart/commit/4d3609abc59f56100c5837782fa12dc4191fe5ac)) - Maxime, Claude Opus 5.5 (1M context)
 
 - - -
 
-## [v0.2.0](https://github.com/batleforc/weebo-stalwart/compare/e664915b1b96d33955c3da94972158eb85470cd3..v0.2.0) - 2026-10-22
+## [v0.2.0](https://github.com/weebo-si-operator/weebo-stalwart/compare/e664915b1b96d33955c3da94972158eb85470cd3..v0.2.0) - 2026-10-22
 #### Features
-- kit v0.23.0, the CRD IDE in the docs (#4) - ([e664915](https://github.com/batleforc/weebo-stalwart/commit/e664915b1b96d33955c3da94972158eb85470cd3)) - Maxime, Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context)
+- kit v0.23.0, the CRD IDE in the docs (#4) - ([e664915](https://github.com/weebo-si-operator/weebo-stalwart/commit/e664915b1b96d33955c3da94972158eb85470cd3)) - Maxime, Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context)
 
 - - -
 
-## [v0.1.2](https://github.com/batleforc/weebo-stalwart/compare/049effd0e2c0dc70e923759d45319afec4f3d50b..v0.1.2) - 2026-10-21
+## [v0.1.2](https://github.com/weebo-si-operator/weebo-stalwart/compare/049effd0e2c0dc70e923759d45319afec4f3d50b..v0.1.2) - 2026-10-21
 #### Bug Fixes
-- weebo-good-practice review: house lints, bounded I/O, typed errors (#3) - ([049effd](https://github.com/batleforc/weebo-stalwart/commit/049effd0e2c0dc70e923759d45319afec4f3d50b)) - Maxime, Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context)
+- weebo-good-practice review: house lints, bounded I/O, typed errors (#3) - ([049effd](https://github.com/weebo-si-operator/weebo-stalwart/commit/049effd0e2c0dc70e923759d45319afec4f3d50b)) - Maxime, Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context)
 
 - - -
 
-## [v0.1.1](https://github.com/batleforc/weebo-stalwart/compare/3b9a71b8468e8773df4ebe052a62081ab7262e0e..v0.1.1) - 2026-10-21
+## [v0.1.1](https://github.com/weebo-si-operator/weebo-stalwart/compare/3b9a71b8468e8773df4ebe052a62081ab7262e0e..v0.1.1) - 2026-10-21
 #### Miscellaneous Chores
-- (**kit**) weebo-operator-kit v0.22.1 (#2) - ([3b9a71b](https://github.com/batleforc/weebo-stalwart/commit/3b9a71b8468e8773df4ebe052a62081ab7262e0e)) - Maxime, Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context)
+- (**kit**) weebo-operator-kit v0.22.1 (#2) - ([3b9a71b](https://github.com/weebo-si-operator/weebo-stalwart/commit/3b9a71b8468e8773df4ebe052a62081ab7262e0e)) - Maxime, Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context), Claude Opus 5.5 (1M context)
 
 - - -
 
-## [v0.1.0](https://github.com/batleforc/weebo-stalwart/compare/b5d4b8b99ddad1a435d55cd9a1412dc147ed3a16..v0.1.0) - 2026-10-19
+## [v0.1.0](https://github.com/weebo-si-operator/weebo-stalwart/compare/b5d4b8b99ddad1a435d55cd9a1412dc147ed3a16..v0.1.0) - 2026-10-19
 #### Features
-- weebo-stalwart, the Stalwart operator (RFC 0001, phases 1 and 2) - ([b5d4b8b](https://github.com/batleforc/weebo-stalwart/commit/b5d4b8b99ddad1a435d55cd9a1412dc147ed3a16)) - Max Batleforc, Claude Opus 5.5 (1M context)
+- weebo-stalwart, the Stalwart operator (RFC 0001, phases 1 and 2) - ([b5d4b8b](https://github.com/weebo-si-operator/weebo-stalwart/commit/b5d4b8b99ddad1a435d55cd9a1412dc147ed3a16)) - Max Batleforc, Claude Opus 5.5 (1M context)
 #### Refactoring
-- (**controller**) one shared watch per kind (kit v0.20.0) - ([0f7bbf6](https://github.com/batleforc/weebo-stalwart/commit/0f7bbf6bfcb358fbd3978d8c062733d6283aeccf)) - Max Batleforc, Claude Opus 5.5 (1M context)
+- (**controller**) one shared watch per kind (kit v0.20.0) - ([0f7bbf6](https://github.com/weebo-si-operator/weebo-stalwart/commit/0f7bbf6bfcb358fbd3978d8c062733d6283aeccf)) - Max Batleforc, Claude Opus 5.5 (1M context)
 #### Miscellaneous Chores
-- (**kit**) weebo-operator-kit v0.21.0 (#1) - ([1f5712e](https://github.com/batleforc/weebo-stalwart/commit/1f5712ebf5c83c710a9e33c104198b2e7011b8ff)) - Maxime, Claude Opus 5.5 (1M context)
-- (**kit**) weebo-operator-kit v0.20.0 - ([ac9ef8a](https://github.com/batleforc/weebo-stalwart/commit/ac9ef8a305dbf061690fd929bf57bf796c4a05dc)) - Max Batleforc, Claude Opus 5.5 (1M context)
-- (**kit**) weebo-operator-kit v0.19.1, nested CRD fields in the reference - ([c38767b](https://github.com/batleforc/weebo-stalwart/commit/c38767b69510baaaa67ea060c89d5cac2edc3ea4)) - Max Batleforc, Claude Opus 5.5 (1M context)
-- (**kit**) weebo-operator-kit v0.18.2, 4 tokio workers by default - ([a19ef29](https://github.com/batleforc/weebo-stalwart/commit/a19ef296d0de40869190b278db34d71bee24b92e)) - Max Batleforc, Claude Opus 5.5 (1M context)
+- (**kit**) weebo-operator-kit v0.21.0 (#1) - ([1f5712e](https://github.com/weebo-si-operator/weebo-stalwart/commit/1f5712ebf5c83c710a9e33c104198b2e7011b8ff)) - Maxime, Claude Opus 5.5 (1M context)
+- (**kit**) weebo-operator-kit v0.20.0 - ([ac9ef8a](https://github.com/weebo-si-operator/weebo-stalwart/commit/ac9ef8a305dbf061690fd929bf57bf796c4a05dc)) - Max Batleforc, Claude Opus 5.5 (1M context)
+- (**kit**) weebo-operator-kit v0.19.1, nested CRD fields in the reference - ([c38767b](https://github.com/weebo-si-operator/weebo-stalwart/commit/c38767b69510baaaa67ea060c89d5cac2edc3ea4)) - Max Batleforc, Claude Opus 5.5 (1M context)
+- (**kit**) weebo-operator-kit v0.18.2, 4 tokio workers by default - ([a19ef29](https://github.com/weebo-si-operator/weebo-stalwart/commit/a19ef296d0de40869190b278db34d71bee24b92e)) - Max Batleforc, Claude Opus 5.5 (1M context)
 
 - - -
 

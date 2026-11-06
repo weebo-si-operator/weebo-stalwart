@@ -13,7 +13,7 @@ export default function HomePage() {
         { href: '/docs/ide', label: 'Access the CRD IDE' },
       ]}
       install={`helm install weebo-stalwart \\
-  oci://ghcr.io/batleforc/charts/weebo-stalwart \\
+  oci://ghcr.io/weebo-si-operator/charts/weebo-stalwart \\
   --namespace weebo-stalwart --create-namespace`}
       example={{
         title: 'Give an app an SMTP account',

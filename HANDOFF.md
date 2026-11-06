@@ -7,7 +7,7 @@ Design: weebo-operator-kit `docs/rfc-0001-stalwart.md`.
 ## What exists
 
 Generated with
-`cargo generate --git https://github.com/batleforc/weebo-operator-kit --tag v0.18.0 templates/operator --name weebo-stalwart --define product=Stalwart`
+`cargo generate --git https://github.com/weebo-si-operator/weebo-operator-kit --tag v0.18.0 templates/operator --name weebo-stalwart --define product=Stalwart`
 (outside the kit tree), then `task init`.
 
 | CRD | Scope | State |

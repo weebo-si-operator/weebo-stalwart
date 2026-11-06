@@ -22,12 +22,12 @@ Deployment and its admission webhook. Stalwart itself is not part of it.
 ## Install
 
 ```bash
-helm install weebo-stalwart oci://ghcr.io/batleforc/charts/weebo-stalwart \
+helm install weebo-stalwart oci://ghcr.io/weebo-si-operator/charts/weebo-stalwart \
   --namespace weebo-stalwart --create-namespace --version X.Y.Z
 ```
 
 Versions are listed on the
-[releases page](https://github.com/batleforc/weebo-stalwart/releases). Every
+[releases page](https://github.com/weebo-si-operator/weebo-stalwart/releases). Every
 image and chart is signed with cosign.
 
 ### Check the install
@@ -58,7 +58,7 @@ Two `Running` pods and eight CRDs mean you're ready to
 
 Every value is validated against the chart's `values.schema.json`: a typo
 or an invalid enum fails the install instead of being ignored. `helm show
-values oci://ghcr.io/batleforc/charts/weebo-stalwart` prints them all with
+values oci://ghcr.io/weebo-si-operator/charts/weebo-stalwart` prints them all with
 their comments.
 
 | Value | Default | Description |
@@ -83,10 +83,10 @@ their comments.
 
 | Artifact | Where |
 | --- | --- |
-| Helm chart | `oci://ghcr.io/batleforc/charts/weebo-stalwart`, version `X.Y.Z` (also attached to the GitHub Release) |
-| Operator image (Red Hat Hummingbird) | `ghcr.io/batleforc/weebo-stalwart-operator:vX.Y.Z` (and `latest`), `linux/amd64` |
-| Operator image (static) | `ghcr.io/batleforc/weebo-stalwart-operator:vX.Y.Z-static` (and `static`), when its scan passed |
-| CRD bundle | `weebo-stalwart-crds.yaml` on the [GitHub Release](https://github.com/batleforc/weebo-stalwart/releases) |
+| Helm chart | `oci://ghcr.io/weebo-si-operator/charts/weebo-stalwart`, version `X.Y.Z` (also attached to the GitHub Release) |
+| Operator image (Red Hat Hummingbird) | `ghcr.io/weebo-si-operator/weebo-stalwart-operator:vX.Y.Z` (and `latest`), `linux/amd64` |
+| Operator image (static) | `ghcr.io/weebo-si-operator/weebo-stalwart-operator:vX.Y.Z-static` (and `static`), when its scan passed |
+| CRD bundle | `weebo-stalwart-crds.yaml` on the [GitHub Release](https://github.com/weebo-si-operator/weebo-stalwart/releases) |
 
 Both images also contain `weebo-stalwart-importer`, used to
 [link existing objects](/docs/guides/migration). They carry an SBOM and
@@ -105,13 +105,13 @@ the release's bundle yourself, **before** each chart upgrade:
 
 ```bash
 kubectl apply --server-side \
-  -f https://github.com/batleforc/weebo-stalwart/releases/download/vX.Y.Z/weebo-stalwart-crds.yaml
+  -f https://github.com/weebo-si-operator/weebo-stalwart/releases/download/vX.Y.Z/weebo-stalwart-crds.yaml
 ```
 
 ## Upgrade
 
 ```bash
-helm upgrade weebo-stalwart oci://ghcr.io/batleforc/charts/weebo-stalwart \
+helm upgrade weebo-stalwart oci://ghcr.io/weebo-si-operator/charts/weebo-stalwart \
   --namespace weebo-stalwart --version X.Y.Z
 ```
 

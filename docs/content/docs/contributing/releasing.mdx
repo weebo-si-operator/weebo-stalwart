@@ -18,8 +18,8 @@ For a tag `vX.Y.Z`, `publish.yml` calls weebo-operator-kit's reusable
 | Step | Gate / output |
 | --- | --- |
 | `version-check` | `Chart.yaml` `version` and `appVersion` and the Cargo workspace version equal the tag |
-| `image` (×2) | `ghcr.io/batleforc/weebo-stalwart-operator:vX.Y.Z` (+ `latest`, Red Hat Hummingbird) and `…:vX.Y.Z-static` (+ `static`, optional: left out when it fails), `linux/amd64`, with SBOM and SLSA provenance, cosign-signed by digest |
-| `chart` | `oci://ghcr.io/batleforc/charts/weebo-stalwart`, version `X.Y.Z`, cosign-signed by digest |
+| `image` (×2) | `ghcr.io/weebo-si-operator/weebo-stalwart-operator:vX.Y.Z` (+ `latest`, Red Hat Hummingbird) and `…:vX.Y.Z-static` (+ `static`, optional: left out when it fails), `linux/amd64`, with SBOM and SLSA provenance, cosign-signed by digest |
+| `chart` | `oci://ghcr.io/weebo-si-operator/charts/weebo-stalwart`, version `X.Y.Z`, cosign-signed by digest |
 | `github-release` | The GitHub Release: `cog changelog` notes, the chart `.tgz`, `weebo-stalwart-crds.yaml` and its Sigstore bundle |
 
 Each image is first built for amd64 and loaded locally, scanned by Grype

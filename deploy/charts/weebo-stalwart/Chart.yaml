@@ -6,9 +6,9 @@ version: 0.3.0
 appVersion: "0.3.0"
 # Native `preStop: sleep` and the admission/policy APIs used here.
 kubeVersion: ">=1.30.0-0"
-home: https://github.com/batleforc/weebo-stalwart
+home: https://github.com/weebo-si-operator/weebo-stalwart
 sources:
-  - https://github.com/batleforc/weebo-stalwart
+  - https://github.com/weebo-si-operator/weebo-stalwart
 keywords:
   - stalwart
   - operator

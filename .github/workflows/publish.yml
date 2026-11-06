@@ -27,7 +27,7 @@ permissions: {}
 
 jobs:
   publish:
-    uses: batleforc/weebo-operator-kit/.github/workflows/publish.yml@v0.24.0
+    uses: weebo-si-operator/weebo-operator-kit/.github/workflows/publish.yml@v0.24.0
     permissions:
       contents: write
       packages: write
@@ -36,6 +36,7 @@ jobs:
       tag: ${{ inputs.tag || github.ref_name }}
       image: ghcr.io/${{ github.repository }}-operator
       chart: ${{ github.event.repository.name }}
+      chart-repo: ghcr.io/weebo-si-operator/charts
       variants: >-
         [{"file": "Containerfile", "suffix": "", "required": true},
          {"file": "Containerfile.static", "suffix": "-static", "required": false}]
