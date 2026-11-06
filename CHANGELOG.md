@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.3.1](https://github.com/batleforc/weebo-stalwart/compare/880bb897754375d620604e665f7d01007c9288be..v0.3.1) - 2026-11-06
+#### Bug Fixes
+- (**deps**) async-executor 1.14.1, zod 4.6.7 - ([db3b794](https://github.com/batleforc/weebo-stalwart/commit/db3b794ed5ba13a1b4503962e0ca95afc730a704)) - Max Batleforc, Claude Opus 5.5
+#### Continuous Integration
+- move to the weebo-si-operator GitHub org - ([880bb89](https://github.com/batleforc/weebo-stalwart/commit/880bb897754375d620604e665f7d01007c9288be)) - Max Batleforc, Claude Opus 5.5
+
+- - -
+
 ## [v0.3.0](https://github.com/weebo-si-operator/weebo-stalwart/compare/4d3609abc59f56100c5837782fa12dc4191fe5ac..v0.3.0) - 2026-10-22
 #### Features
 - kit v0.24.0, mail domains, submission host and Vault drawn in the CRD IDE (#5) - ([4d3609a](https://github.com/weebo-si-operator/weebo-stalwart/commit/4d3609abc59f56100c5837782fa12dc4191fe5ac)) - Maxime, Claude Opus 5.5 (1M context)
