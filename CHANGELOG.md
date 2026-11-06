@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.3.2](https://github.com/weebo-si-operator/weebo-stalwart/compare/43d5dc58240442a61ecd2f8b59df11ab85588509..v0.3.2) - 2026-11-06
+#### Miscellaneous Chores
+- (**deps**) weebo-operator-kit v0.28.1 - ([43d5dc5](https://github.com/weebo-si-operator/weebo-stalwart/commit/43d5dc58240442a61ecd2f8b59df11ab85588509)) - Max Batleforc, Claude Opus 5.5
+
+- - -
+
 ## [v0.3.1](https://github.com/batleforc/weebo-stalwart/compare/880bb897754375d620604e665f7d01007c9288be..v0.3.1) - 2026-11-06
 #### Bug Fixes
 - (**deps**) async-executor 1.14.1, zod 4.6.7 - ([db3b794](https://github.com/batleforc/weebo-stalwart/commit/db3b794ed5ba13a1b4503962e0ca95afc730a704)) - Max Batleforc, Claude Opus 5.5
