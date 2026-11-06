@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.4.0](https://github.com/weebo-si-operator/weebo-stalwart/compare/27a0d4ec5763a633c0ea75d1069191b138fbb015..v0.4.0) - 2026-11-06
+#### Features
+- (**vault**) additional mounts in other Vault namespaces (kit v0.29.0) - ([27a0d4e](https://github.com/weebo-si-operator/weebo-stalwart/commit/27a0d4ec5763a633c0ea75d1069191b138fbb015)) - Max Batleforc, Claude Opus 5.5
+
+- - -
+
 ## [v0.3.3](https://github.com/weebo-si-operator/weebo-stalwart/compare/e8fd2cf245e9243355e109efaba21ab3055756d8..v0.3.3) - 2026-11-06
 #### Continuous Integration
 - accept CVE-2026-84243 (glibc of the core runtime) until 2026-12-06 - ([e8fd2cf](https://github.com/weebo-si-operator/weebo-stalwart/commit/e8fd2cf245e9243355e109efaba21ab3055756d8)) - Max Batleforc, Claude Opus 5.5
