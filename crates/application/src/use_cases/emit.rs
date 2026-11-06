@@ -70,6 +70,7 @@ mod tests {
             namespace: namespace.map(String::from),
             path: None,
             mount: None,
+            vault_namespace: None,
         }
     }
 
