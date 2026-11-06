@@ -266,8 +266,10 @@ impl WebhookState {
         };
         check_smtp_targets(targets, Some(settings.default_backend)).map_err(denied)?;
         let paths = settings.vault.as_ref().map(|v| VaultPaths {
+            mount: &v.mount,
             path_prefix: &v.path_prefix,
             path_grants: &v.path_grants,
+            additional_mounts: &[],
         });
         check_vault_targets(targets, Some(namespace), paths)
             .map_err(|m| Denial::new(ReasonCode::SecretTargetFailed, m))
@@ -448,6 +450,7 @@ mod tests {
                 submission: Default::default(),
                 default_backend: api::common::SecretStoreBackend::Vault,
                 vault: Some(application::ports::VaultSettings {
+                    mount: "mv".into(),
                     path_prefix: String::new(),
                     path_grants: vec![],
                 }),

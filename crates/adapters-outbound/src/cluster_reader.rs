@@ -432,6 +432,7 @@ impl ClusterReader for KubeClusterReader {
                     submission: i.spec.submission,
                     default_backend: i.spec.secret_store.backend,
                     vault: i.spec.secret_store.vault.map(|v| VaultSettings {
+                        mount: v.mount,
                         path_prefix: v.path_prefix,
                         path_grants: v.path_grants,
                     }),

@@ -69,6 +69,7 @@ mod tests {
             name: name.into(),
             namespace: namespace.map(String::from),
             path: None,
+            mount: None,
         }
     }
 

@@ -248,6 +248,8 @@ pub struct InstanceSettings {
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct VaultSettings {
+    /// The instance's KV v2 mount: a target naming it is on that mount.
+    pub mount: String,
     pub path_prefix: String,
     pub path_grants: Vec<VaultPathGrant>,
 }
