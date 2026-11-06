@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.3.3](https://github.com/weebo-si-operator/weebo-stalwart/compare/e8fd2cf245e9243355e109efaba21ab3055756d8..v0.3.3) - 2026-11-06
+#### Continuous Integration
+- accept CVE-2026-84243 (glibc of the core runtime) until 2026-12-06 - ([e8fd2cf](https://github.com/weebo-si-operator/weebo-stalwart/commit/e8fd2cf245e9243355e109efaba21ab3055756d8)) - Max Batleforc, Claude Opus 5.5
+
+- - -
+
 ## [v0.3.2](https://github.com/weebo-si-operator/weebo-stalwart/compare/43d5dc58240442a61ecd2f8b59df11ab85588509..v0.3.2) - 2026-11-06
 #### Miscellaneous Chores
 - (**deps**) weebo-operator-kit v0.28.1 - ([43d5dc5](https://github.com/weebo-si-operator/weebo-stalwart/commit/43d5dc58240442a61ecd2f8b59df11ab85588509)) - Max Batleforc, Claude Opus 5.5
