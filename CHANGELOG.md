@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.5.0](https://github.com/weebo-si-operator/weebo-stalwart/compare/edb3d735ba1b861e8aea7773bc0e1b61c18b212f..v0.5.0) - 2026-11-14
+#### Features
+- (**chart**) networkPolicy.kind CiliumNetworkPolicy (kit v0.32.0) - ([e5a3b00](https://github.com/weebo-si-operator/weebo-stalwart/commit/e5a3b00a0f3d382ac212dcc303f9178ebdceb4d8)) - Max Batleforc, Claude Opus 5.5
+#### Bug Fixes
+- (**image**) core-runtime base with libgcc 16.2.1-3.2 - ([edb3d73](https://github.com/weebo-si-operator/weebo-stalwart/commit/edb3d735ba1b861e8aea7773bc0e1b61c18b212f)) - Max Batleforc, Claude Opus 5.5
+
+- - -
+
 ## [v0.4.0](https://github.com/weebo-si-operator/weebo-stalwart/compare/27a0d4ec5763a633c0ea75d1069191b138fbb015..v0.4.0) - 2026-11-06
 #### Features
 - (**vault**) additional mounts in other Vault namespaces (kit v0.29.0) - ([27a0d4e](https://github.com/weebo-si-operator/weebo-stalwart/commit/27a0d4ec5763a633c0ea75d1069191b138fbb015)) - Max Batleforc, Claude Opus 5.5
