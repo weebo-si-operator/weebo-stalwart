@@ -498,6 +498,25 @@
         "enabled": {
           "type": "boolean"
         },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "NetworkPolicy",
+            "CiliumNetworkPolicy"
+          ]
+        },
+        "cilium": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dnsTo": {
+              "type": "object"
+            },
+            "apiServerTo": {
+              "type": "object"
+            }
+          }
+        },
         "webhookFrom": {
           "type": "array",
           "items": {
@@ -559,64 +578,19 @@
             "stalwart": {
               "type": "array",
               "items": {
-                "type": "object",
-                "properties": {
-                  "to": {
-                    "type": "array",
-                    "items": {
-                      "type": "object"
-                    }
-                  },
-                  "ports": {
-                    "type": "array",
-                    "items": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "additionalProperties": false
+                "type": "object"
               }
             },
             "vault": {
               "type": "array",
               "items": {
-                "type": "object",
-                "properties": {
-                  "to": {
-                    "type": "array",
-                    "items": {
-                      "type": "object"
-                    }
-                  },
-                  "ports": {
-                    "type": "array",
-                    "items": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "additionalProperties": false
+                "type": "object"
               }
             },
             "extra": {
               "type": "array",
               "items": {
-                "type": "object",
-                "properties": {
-                  "to": {
-                    "type": "array",
-                    "items": {
-                      "type": "object"
-                    }
-                  },
-                  "ports": {
-                    "type": "array",
-                    "items": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "additionalProperties": false
+                "type": "object"
               }
             }
           }

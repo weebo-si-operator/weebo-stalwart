@@ -95,7 +95,7 @@
                     "type": "boolean"
                   },
                   "namespaces": {
-                    "description": "Namespaces whose objects may write `paths`: exact names, `*`, or a\nprefix glob such as `team-*`. `team-*` opens the paths to every\nmatching namespace.",
+                    "description": "Namespaces whose objects may write `paths`: exact names, `*`, a\nprefix glob such as `team-*`, or a pattern capturing part of the\nname once, such as `dev-ws-{user}`. `team-*` opens the paths to every\nmatching namespace; with `dev-ws-{user}`, a `{user}` path segment\nmatches only the captured value (`dev-ws-max` may write\n`max/token`, not `bob/token`).",
                     "items": {
                       "maxLength": 64,
                       "minLength": 1,
@@ -105,10 +105,10 @@
                     "type": "array"
                   },
                   "paths": {
-                    "description": "Path patterns under the mount, compared segment by segment: a\nliteral segment matches itself, `+` exactly one segment, and a last\n`*` one or more. Each holds at least one literal segment, e.g.\n`shared/auth`, `+/auth`, `platform/*`. Prefer exact paths where\nvalues not written by the operator live: a covered object may take\nover a value no object owns yet.",
+                    "description": "Path patterns under the mount, compared segment by segment: a\nliteral segment matches itself, `+` exactly one segment, `{name}`\nthe value every namespace pattern of the grant captures as `name`,\nand a last `*` one or more. Each holds at least one literal or\n`{name}` segment, e.g. `shared/auth`, `+/auth`, `platform/*`,\n`{user}/forgejo-token`. Prefer exact paths where\nvalues not written by the operator live: a covered object may take\nover a value no object owns yet.",
                     "items": {
                       "maxLength": 512,
-                      "pattern": "^(?:(?:[^/*+]+|\\+)/)*(?:[^/*+]+|\\+|\\*)$",
+                      "pattern": "^(?:(?:[^/*+{}]+|\\+|\\{[a-z][a-z0-9_]*\\})/)*(?:[^/*+{}]+|\\+|\\*|\\{[a-z][a-z0-9_]*\\})$",
                       "type": "string",
                       "x-kubernetes-validations": [
                         {

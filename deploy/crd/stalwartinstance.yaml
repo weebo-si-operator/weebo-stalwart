@@ -132,9 +132,12 @@ spec:
                               type: boolean
                             namespaces:
                               description: |-
-                                Namespaces whose objects may write `paths`: exact names, `*`, or a
-                                prefix glob such as `team-*`. `team-*` opens the paths to every
-                                matching namespace.
+                                Namespaces whose objects may write `paths`: exact names, `*`, a
+                                prefix glob such as `team-*`, or a pattern capturing part of the
+                                name once, such as `dev-ws-{user}`. `team-*` opens the paths to every
+                                matching namespace; with `dev-ws-{user}`, a `{user}` path segment
+                                matches only the captured value (`dev-ws-max` may write
+                                `max/token`, not `bob/token`).
                               items:
                                 maxLength: 64
                                 minLength: 1
@@ -144,14 +147,16 @@ spec:
                             paths:
                               description: |-
                                 Path patterns under the mount, compared segment by segment: a
-                                literal segment matches itself, `+` exactly one segment, and a last
-                                `*` one or more. Each holds at least one literal segment, e.g.
-                                `shared/auth`, `+/auth`, `platform/*`. Prefer exact paths where
+                                literal segment matches itself, `+` exactly one segment, `{name}`
+                                the value every namespace pattern of the grant captures as `name`,
+                                and a last `*` one or more. Each holds at least one literal or
+                                `{name}` segment, e.g. `shared/auth`, `+/auth`, `platform/*`,
+                                `{user}/forgejo-token`. Prefer exact paths where
                                 values not written by the operator live: a covered object may take
                                 over a value no object owns yet.
                               items:
                                 maxLength: 512
-                                pattern: ^(?:(?:[^/*+]+|\+)/)*(?:[^/*+]+|\+|\*)$
+                                pattern: ^(?:(?:[^/*+{}]+|\+|\{[a-z][a-z0-9_]*\})/)*(?:[^/*+{}]+|\+|\*|\{[a-z][a-z0-9_]*\})$
                                 type: string
                                 x-kubernetes-validations:
                                 - message: a path pattern has no "." or ".." segment

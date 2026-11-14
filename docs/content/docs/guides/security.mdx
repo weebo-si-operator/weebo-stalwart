@@ -155,6 +155,24 @@ networkPolicy:
           - { port: 8080, protocol: TCP }
 ```
 
+On Cilium, an `ipBlock` never selects the API server (Cilium gives it the
+`kube-apiserver` identity), so render a `CiliumNetworkPolicy` instead: DNS
+and the API server come built in, and every egress rule is written as a
+Cilium rule. A rule without a `to*` selector is refused at render time.
+
+```yaml
+networkPolicy:
+  enabled: true
+  kind: CiliumNetworkPolicy
+  egress:
+    enabled: true
+    stalwart:
+      - toEndpoints:
+          - matchLabels: { "k8s:io.kubernetes.pod.namespace": mail }
+        toPorts:
+          - ports: [{ port: "8080", protocol: TCP }]
+```
+
 The operator only reaches Stalwart's HTTP listener: never SMTP, IMAP or
 anything outside the cluster. A blocked Stalwart shows up as
 `InstanceUnreachable` on the `StalwartInstance`.
