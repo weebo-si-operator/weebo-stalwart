@@ -1,5 +1,5 @@
-//! Live contract of `JmapGateway` against a real Stalwart v0.16.27
-//! (`task stalwart:container:start ENGINE=podman`, then
+//! Live contract of `JmapGateway` against a real Stalwart (v1.2.0, v1.1.1, v1.0.0 or v0.16.27:
+//! `task stalwart:container:start ENGINE=podman`, then
 //! `task test:live-stalwart`): every normalization of "Champs comparés"
 //! read back from the server itself — a domain created then read compares
 //! as in sync ("reste silencieux" against the image, RFC 0003 rule 3) —
@@ -13,7 +13,7 @@
 // the test that called it, with its message.
 #![expect(clippy::unwrap_used, reason = "test helpers: a panic is a failed test")]
 
-use adapters_outbound::jmap::SUPPORTED_SCHEMAS;
+use adapters_outbound::jmap::{SUPPORTED_SCHEMAS, check_v1_schema};
 use adapters_outbound::{JmapClient, JmapGateway};
 use application::ports::{GatewayError, RemoteGateway};
 use domain::mail_domain::{
@@ -51,15 +51,20 @@ async fn ping_accepts_the_bootstrapped_key_and_the_schema() {
     gateway(&live).ping().await.unwrap();
 }
 
-/// Q10 / D13: the hash the image serves is the one the operator ships.
+/// Q10 / D13: a v0.16 image serves a hash the operator ships; a 1.x image
+/// serves (gzipped) a schema with the v1 marker and every property the
+/// gateway uses.
 #[tokio::test]
 #[ignore = "needs a real Stalwart: task stalwart:container:start"]
-async fn spike_the_image_serves_a_supported_schema_hash() {
+async fn spike_the_image_serves_a_supported_schema() {
     let live = LiveStalwart::from_env();
     let http = JmapClient::client_builder().build().unwrap();
     let client = JmapClient::new(&live.url, live.token.clone(), http).unwrap();
     let hash = client.schema_hash().await.unwrap();
-    assert_eq!(hash, SUPPORTED_SCHEMAS[0].0);
+    if !SUPPORTED_SCHEMAS.iter().any(|(h, _)| *h == hash) {
+        let schema = client.schema(&hash).await.unwrap();
+        check_v1_schema(&schema).unwrap();
+    }
 }
 
 #[tokio::test]
@@ -90,7 +95,7 @@ async fn a_created_domain_reads_back_in_sync_then_drift_is_corrected() {
     live.admin_call(
         "x:Domain/set",
         json!({"update": {&id: {
-            "aliases": {format!("ALIAS.{name}"): true, format!("other-{name}"): true, "by-hand.example": true},
+            "aliases": {format!("ALIAS.{name}"): true, format!("other-{name}"): true, "by-hand.test": true},
             "subAddressing": {"@type": "Enabled"},
             "allowRelaying": true,
             "dkimManagement/rotateAfter": 86400000,
@@ -370,8 +375,8 @@ mod accounts {
             "x:Account/set",
             json!({"update": {&id: {
                 "roles": {"@type": "Admin"},
-                "aliases": {"0": {"name": "noreply", "domainId": &domain, "enabled": true},
-                            "1": {"name": "extra", "domainId": &domain, "enabled": true}},
+                "aliases": {"0": {"name": "noreply", "domainId": &domain},
+                            "1": {"name": "extra", "domainId": &domain}},
                 "permissions/disabledPermissions/emailReceive": null,
             }}}),
         )
@@ -379,7 +384,26 @@ mod accounts {
         let edited = gw.get_account(&id).await.unwrap().unwrap();
         let (patch, drift) = account_patch(&desired, &edited);
         assert_eq!(drift.fields(), ["aliases", "roles", "permissions"]);
-        gw.update_account(&id, &patch).await.unwrap();
+        if live.is_v1().await {
+            // 1.x: a key can't update an account holding permissions it
+            // lacks, the Admin role's: the correction is refused until an
+            // administrator takes the role back.
+            assert!(matches!(
+                gw.update_account(&id, &patch).await,
+                Err(GatewayError::Unauthorized(m)) if m.contains("not authorized to grant")
+            ));
+            live.admin_call(
+                "x:Account/set",
+                json!({"update": {&id: {"roles": {"@type": "User"}}}}),
+            )
+            .await;
+            let edited = gw.get_account(&id).await.unwrap().unwrap();
+            let (patch, drift) = account_patch(&desired, &edited);
+            assert_eq!(drift.fields(), ["aliases", "permissions"]);
+            gw.update_account(&id, &patch).await.unwrap();
+        } else {
+            gw.update_account(&id, &patch).await.unwrap();
+        }
         let fixed = gw.get_account(&id).await.unwrap().unwrap();
         assert!(account_patch(&desired, &fixed).1.is_empty(), "{fixed:?}");
         // The App Password survived the patch.
@@ -388,6 +412,38 @@ mod accounts {
             gw.find_account(&domain, "FORGEJO").await.unwrap(),
             Some(id.clone())
         );
+        live.destroy_domain(&name).await;
+    }
+
+    /// An alias disabled by hand (`enabled` on v0.16, `enable` on 1.x) is
+    /// drift, and the correction enables it again.
+    #[tokio::test]
+    #[ignore = "needs a real Stalwart: task stalwart:container:start"]
+    async fn a_disabled_alias_is_enabled_again() {
+        let live = LiveStalwart::from_env();
+        let gw = gateway(&live);
+        let (name, domain) = domain(&gw, "alias").await;
+        let desired = DesiredAccount::new(AccountType::User, "bob", &domain, &s(&["robert"]));
+        let id = gw.create_account(&desired).await.unwrap();
+        let flag = if live.is_v1().await {
+            "enable"
+        } else {
+            "enabled"
+        };
+        live.admin_call(
+            "x:Account/set",
+            json!({"update": {&id: {
+                "aliases": {"0": {"name": "robert", "domainId": &domain, flag: false}},
+            }}}),
+        )
+        .await;
+        let edited = gw.get_account(&id).await.unwrap().unwrap();
+        assert!(!edited.aliases[0].enabled, "{edited:?}");
+        let (patch, drift) = account_patch(&desired, &edited);
+        assert_eq!(drift.fields(), ["aliases"]);
+        gw.update_account(&id, &patch).await.unwrap();
+        let fixed = gw.get_account(&id).await.unwrap().unwrap();
+        assert!(account_patch(&desired, &fixed).1.is_empty(), "{fixed:?}");
         live.destroy_domain(&name).await;
     }
 
@@ -494,7 +550,8 @@ mod accounts {
         live.destroy_domain(&name).await;
     }
 
-    /// A list's recipients kept in the case sent compare as a set; an
+    /// A list's recipients compare as a lowercased set, whether the server
+    /// keeps the case sent (up to 1.1) or lowercases them (1.2.0); an
     /// address is unique across lists and accounts.
     #[tokio::test]
     #[ignore = "needs a real Stalwart: task stalwart:container:start"]
@@ -509,14 +566,20 @@ mod accounts {
             &s(&["Alice@Example.com", "bob@example.com"]),
         );
         let list = gw.create_mailing_list(&desired).await.unwrap();
-        // Stored as sent: send another case behind the operator's back.
+        // Another case behind the operator's back.
         live.admin_call(
             "x:MailingList/set",
             json!({"update": {&list: {"recipients": {"ALICE@example.com": true, "bob@example.com": true}}}}),
         )
         .await;
         let stored = gw.get_mailing_list(&list).await.unwrap().unwrap();
-        assert!(stored.recipients.contains(&"ALICE@example.com".to_string()));
+        assert!(
+            stored
+                .recipients
+                .iter()
+                .any(|r| r == "ALICE@example.com" || r == "alice@example.com"),
+            "{stored:?}"
+        );
         assert!(
             mailing_list_patch(&desired, &stored).1.is_empty(),
             "{stored:?}"
