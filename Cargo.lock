@@ -1621,7 +1621,6 @@ dependencies = [
  "domain",
  "k8s-openapi",
  "kube",
- "reqwest",
  "rustls",
  "serde",
  "serde_json",
@@ -3437,11 +3436,8 @@ version = "0.5.0"
 dependencies = [
  "application",
  "async-trait",
- "kube",
  "reqwest",
- "serde",
  "serde_json",
- "tokio",
  "weebo-kit-api",
  "weebo-kit-testkit",
 ]
